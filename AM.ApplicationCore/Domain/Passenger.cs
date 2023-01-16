@@ -35,11 +35,14 @@ namespace AM.ApplicationCore.Domain
             
         }
 
+<<<<<<< HEAD
         public virtual void PassengerTye()
         {
             Console.WriteLine("Im passenger");
         }
 
+=======
+>>>>>>> f61595b68a5a8e23bc93ad2b5d78efe365441702
 
     }
 }

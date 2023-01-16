@@ -12,11 +12,13 @@ namespace AM.ApplicationCore.Domain
         public float Salary { get; set; }
         public String Function { get; set; }
 
+
         public override void PassengerTye()
         {
             //base.PassengerTye();
             Console.WriteLine("Je suis Staff !");
             
         }
+
     }
 }

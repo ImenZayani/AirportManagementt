@@ -15,5 +15,12 @@ namespace AM.ApplicationCore.Domain
         public String Departure { get; set; }
         public String Destination { get; set; }
 
+        public Plane Plane { get; set; }
+
+        public Flight()
+        {
+
+        }
+
     }
 }

@@ -11,5 +11,7 @@ namespace AM.ApplicationCore.Interfaces
     {
         IList<DateTime> GetFlightDates(string destination);
         void ShowFlightDetails(Plane plane);
+
+        int ProgrammedFlightNumber(DateTime startDate);
     }
 }

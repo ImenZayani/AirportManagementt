@@ -41,11 +41,27 @@ namespace AM.ApplicationCore.Services
             
         }
 
+        public int ProgrammedFlightNumber(DateTime startDate)
+        {
+            var query = from f in Flights
+                        where (f.FlightDate - startDate).TotalDays < 7
+                        select f.FlightDate;
+            return query.Count();
+
+                        
+        }
+
         public void ShowFlightDetails(Plane plane)
         {
             var query = from f in Flights
                         where f.Plane == plane
-                        select (f.FlightDate, f.Destination);
+                        //select (f.FlightDate, f.Destination);
+                        select new { f.FlightDate, f.Destination };
+            foreach(var f in query) {
+                {
+                    Console.WriteLine(f.FlightDate + " " + f.Destination);
+                } }
+
         }
     }
 }

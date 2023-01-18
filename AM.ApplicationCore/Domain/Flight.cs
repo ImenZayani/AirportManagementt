@@ -17,6 +17,9 @@ namespace AM.ApplicationCore.Domain
 
         public Plane Plane { get; set; }
 
+        public ICollection<Passenger> Passengers { get; set; }
+        public ICollection<Traveller> Travellers { get; set; }
+
         public Flight()
         {
 

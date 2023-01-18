@@ -15,5 +15,7 @@ namespace AM.ApplicationCore.Domain
         public DateTime ManufactureDate { get; set; }
         public planeType PlanType { get; set; }
 
+        public ICollection<Flight> Flights { get; set; }
+
     }
 }

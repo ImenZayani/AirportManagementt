@@ -12,7 +12,32 @@ namespace AM.ApplicationCore.Services
     public class ServiceFlight : IServiceFlight
     {
         public IList<Flight> Flights { get; set; }
-        public IList<Traveller> Travellers { get; set; }
+
+        public IEnumerable<IGrouping<String, Flight>> DestinationGroupedFlights()
+        {
+            var lambda = Flights.GroupBy(f => f.Destination);
+            foreach (var f in lambda)
+            {
+                Console.WriteLine(f.Key);
+                foreach (var d in f)
+                {
+                    Console.WriteLine(d.FlightDate);
+                }
+            }
+            return lambda;
+
+            //var query = from f in Flights
+            //            group f by f.Destination;
+            //foreach(var f in query) 
+            //{
+            //    Console.WriteLine(f.Key);
+            //    foreach (var d in f)
+            //    {
+            //        Console.WriteLine(d.FlightDate);
+            //    }
+            //}
+            //return query;
+        }
 
         public double DurationAverage(string destination)
         {
@@ -74,6 +99,7 @@ namespace AM.ApplicationCore.Services
         public IEnumerable<Traveller> SeniorTravellers(Flight flight)
         {
             //return flight.Passengers.OfType<Traveller>().OrderBy(f=>f.BirthDate).Take(3);
+            // on utilise oftype avec l'héritage !  
             //or
             var query = from f in flight.Passengers.OfType<Traveller>()
                         orderby f.BirthDate

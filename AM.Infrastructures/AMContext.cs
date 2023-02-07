@@ -31,6 +31,26 @@ namespace AM.Infrastructures
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
 
+            //Has  un  Type  Complex 
+            modelBuilder.Entity<Passenger>()
+
+                .OwnsOne(p => p.FullName, full =>
+            {
+                full.Property(f => f.FirstName).HasMaxLength(30).HasColumnName("PassFirstName");
+                full.Property(f => f.LastName).HasColumnName("PassLastName").IsRequired();
+            });//configuration de  TPH
+                 //.HasDiscriminator<int>("PassengerType")
+                 //.HasValue<Passenger>(0)
+                 //.HasValue<Traveller>(1)
+                 //.HasValue<Staff>(2);
+
+
+            //Configuration de TPT 
+
+            modelBuilder.Entity<Staff>().ToTable("Staffs");
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
+
+
             //2eme methode de configuration
             modelBuilder.Entity<Passenger>().OwnsOne(p => p.FullName, full =>
             {
